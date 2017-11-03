@@ -46,14 +46,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Koshi Task Methods\AdamsMethod.cs" />
+    <Compile Include="Koshi Task Methods\KoshiTask.cs" />
+    <Compile Include="Koshi Task Methods\RungeKuttaMethod.cs" />
+    <Compile Include="Method.cs" />
+    <Compile Include="Support classes\Approximator.cs" />
+    <Compile Include="Equasion methods\ChordMethod.cs" />
+    <Compile Include="Support classes\Equasion.cs" />
+    <Compile Include="Equasion methods\EquasionMethod.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Integral methods\GaussIntegralMethod.cs" />
+    <Compile Include="Equasion methods\GenericIteration.cs" />
+    <Compile Include="Equasion methods\HalfDivision.cs" />
+    <Compile Include="Integral methods\IntegralMethod.cs" />
+    <Compile Include="Support classes\Graph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Support classes\Graph.Designer.cs">
+      <DependentUpon>Graph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Support classes\GraphicPainter.cs" />
+    <Compile Include="Support classes\MathFunction.cs" />
+    <Compile Include="Support classes\Matrix.cs" />
+    <Compile Include="Equasion methods\NewtonMethod.cs" />
+    <Compile Include="Support classes\MultiMathFunction.cs" />
+    <Compile Include="Support classes\Polynomial.cs" />
+    <Compile Include="Support classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Integral methods\RectangularMethod.cs" />
+    <Compile Include="Equasion methods\SimpleIteration.cs" />
+    <Compile Include="Integral methods\SimpsonMethod.cs" />
+    <Compile Include="Support classes\SLAE.cs" />
+    <Compile Include="Integral methods\TrapezoidMethod.cs" />
+    <Compile Include="Support classes\Vector.cs" />
+    <Compile Include="Table.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Table.Designer.cs">
+      <DependentUpon>Table.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +102,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Support classes\Graph.resx">
+      <DependentUpon>Graph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Table.resx">
+      <DependentUpon>Table.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
