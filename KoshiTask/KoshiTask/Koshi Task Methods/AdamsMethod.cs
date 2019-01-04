@@ -21,9 +21,11 @@ namespace library
                 new KeyValuePair<double, double>(task.Range.Key, task.Range.Key + step * n));
             result.AddRange(RungeKuttaMethod.Solve(supportTask, n));
 
-            double[] A = new double[n + 2];
-            for (int i = 0; i < n + 2; i++)
-                A[i] = Ak(i - 1);
+            double[] A = new double[n + 1];
+            double aInterpol;
+            for (int i = 0; i < n + 1; i++)
+                A[i] = AkInter(i);
+            aInterpol = AkInter(-1);
 
             int index = n;
 
@@ -34,11 +36,11 @@ namespace library
                 vars.Add(1, 1);
 
                 double sum = result[index].Value;
-                for (int i = 1; i < n + 2; i++)
+                for (int i = 0; i < n + 1; i++)
                 {
-                    vars[0] = result[index + 1 - i].Key;
-                    vars[1] = result[index + 1 - i].Value;
-                    sum += step * task.Derivative.Calculate(vars);
+                    vars[0] = result[index - i].Key;
+                    vars[1] = result[index - i].Value;
+                    sum += step * task.Derivative.Calculate(vars) * A[i];
                 }
 
                 double yprev, 
@@ -47,7 +49,7 @@ namespace library
                 vars.Remove(1);
                 vars[0] = result[index].Key + step;
 
-                MathFunction func = sum + step * A[0] * task.Derivative.TransformToSimpleFunction(vars);
+                MathFunction func = sum + step * aInterpol * task.Derivative.TransformToSimpleFunction(vars);
 
                 do
                 {
@@ -97,7 +99,7 @@ namespace library
 
             return new KeyValuePair<double, double>(left, right);
         }
-        private static double Ak(int k)
+        private static double AkInter(int k)
         {
             MathFunction res = 1;
 
@@ -114,5 +116,23 @@ namespace library
 
             return result;
         }
+        private static double AkExtra(int k)
+        {
+            MathFunction res = 1;
+
+            for (int i = 0; i <= n; i++)
+                if (i != k)
+                    res *= new XFunction(1.0) + i;
+
+            double result = new SimpsonMethod().Solve(res, 0, 1, 10);
+
+            Func<long, long> Factorial = null;
+            Factorial = x => x == 0 ? 1 : x * Factorial(x - 1);
+
+            result *= Math.Pow(-1, k) / (Factorial(k) * Factorial(n - k));
+
+            return result;
+        }
+
     }
 }

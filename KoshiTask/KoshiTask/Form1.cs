@@ -14,6 +14,9 @@ namespace KoshiTask
 { 
     public partial class Form1 : Form
     {
+        //private static MultiMathFunction func = 2.0 * new ArgumentFunction(1.0, 0);
+        //private static MathFunction accurate = new PowerFunction(1.0, new XFunction(1.0), 2);
+
         private static MultiMathFunction func = (Math.E ^ new ArgumentFunction(1.0, 1)) - 2.0 / new ArgumentFunction(1.0, 0);
         private static MathFunction accurate = -new LnFunction(1.0, 2 * new LnFunction(1.0, new XFunction(1.0)) + 2);
         private static library.KoshiTask task = new library.KoshiTask(func,
